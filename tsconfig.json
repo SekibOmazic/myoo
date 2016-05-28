@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "module": "commonjs",
+    "noEmitHelpers": false,
+    "target": "ES5",
+    "outDir": "./"
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "files": [
+    "typings/index.d.ts",
+    "src/core.ts",
+    "src/Myoo.ts"
+  ],
+  "filesGlob": [
+    "typings/index.d.ts",
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tests"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}
