@@ -8,6 +8,8 @@ require('./add/filter');
 require('./add/map');
 require('./add/skip');
 require('./add/take');
+require('./add/takeUntil');
+require('./add/switchMap');
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = core_1.Observable;
 //# sourceMappingURL=Myoo.js.map

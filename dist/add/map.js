@@ -4,7 +4,14 @@ function map(projection) {
     var _this = this;
     return core_1.Observable.create(function (observer) {
         var mapObserver = {
-            next: function (x) { return observer.next(projection(x)); },
+            next: function (x) {
+                try {
+                    observer.next(projection(x));
+                }
+                catch (e) {
+                    observer.error(e);
+                }
+            },
             error: function (err) { return observer.error(err); },
             complete: function () { return observer.complete(); }
         };

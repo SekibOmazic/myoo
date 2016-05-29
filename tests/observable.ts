@@ -90,7 +90,7 @@ describe('Observable', () => {
 
     source.subscribe(observer);
 
-    // TODO: assure that cleanup function has been invoked
+    // TODO: assure that cleanup function has been invoked (currently bug(?) in Subscription)
     //assert.equal(on, false);
 
     assert.equal(expected.length, 0);

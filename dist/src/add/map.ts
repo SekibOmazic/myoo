@@ -6,7 +6,13 @@ export function map<T, U>(projection: Projection<T, U>): Observable<U> {
 
   return Observable.create<U>((observer: Observer<U>) => {
     let mapObserver = {
-      next: (x: T) => observer.next(projection(x)),
+      next: (x: T) => {
+        try {
+          observer.next(projection(x));
+        } catch (e) {
+          observer.error(e);
+        }
+      },
       error: (err: any) => observer.error(err),
       complete: () => observer.complete()
     };
