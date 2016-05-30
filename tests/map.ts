@@ -1,6 +1,4 @@
-//import * as Myoo from '../dist/Myoo';
-
-import o, {Observable, Subscriber, Observer} from '../dist/Myoo';
+import {Observable} from '../dist/Myoo';
 
 import * as assert from 'assert';
 
@@ -22,9 +20,10 @@ describe('Map', ()=> {
     });
   });
 
-  it('should propagate user mistakes in project as errors', (done) => {
+  it('should pass project function errors to observer.error()', (done) => {
     const source = Observable.interval(100).take(1);
     const input = source.map(
+      // make an error here
       x => (<string> <any> x).toLowerCase()
     );
 
@@ -42,9 +41,8 @@ describe('Map', ()=> {
 
   it('should clean up Operator producer when complete', (done) => {
     const source = Observable.interval(100).take(1);
-    const input = source.map(i => i * 10);
-    const expected = [10, 20, 30];
-    let completeCalled = false;
+    const input = source.map(i => i + 1);
+    const expected = [1, 2, 3];
 
     input.subscribe({
       next: (x:number) => {
@@ -52,17 +50,10 @@ describe('Map', ()=> {
       },
       error: (err:any) => done(err),
       complete: () => {
-        // TODO: never called. why?
-        completeCalled = true;
+        assert.strictEqual(expected.length, 2);
         done();
-        assert.strictEqual(completeCalled, true);
       },
     });
-
-    done();
-
-    // TODO: async doesn't work :-(
-    // assert.strictEqual(completeCalled, true);
   });
 
 });
