@@ -36,7 +36,6 @@ export class Subscription<T> {
       complete: () => {
 
         if (!this.isStopped) {
-          //console.log('Subscription.observer.complete');
           this.isStopped = true;
 
           if (destination.complete) {
@@ -49,7 +48,10 @@ export class Subscription<T> {
       }
     };
 
-    this.cleanup = subscriber(observer);
+    let cleanupFn = subscriber(observer);
+    if (typeof cleanupFn === 'function') {
+      this.cleanup = cleanupFn;
+    }
   }
 
   unsubscribe() {
@@ -61,7 +63,6 @@ export class Subscription<T> {
     this.isUnsubscribed = true;
 
     if (this.cleanup) {
-      //console.log('call cleanup from unsubscribe')
       this.cleanup();
     }
   }

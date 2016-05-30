@@ -6,5 +6,6 @@ import './add/skip';
 import './add/take';
 import './add/takeUntil';
 import './add/switchMap';
+import './add/distinctUntilChanged';
 export { Observer, Observable, Subscriber, Subscription, Cleanup };
 export default Observable;

@@ -1,19 +1,17 @@
-//import * as Myoo from '../dist/Myoo';
-
-import o, {Observable, Subscriber, Observer} from '../dist/Myoo';
+import {Observable, Subscriber, Observer} from '../dist/Myoo';
 
 import * as assert from 'assert';
 
 describe('Observable', () => {
 
   it('should have all the core static operators', () => {
-    assert.equal(typeof o.create, 'function');
-    assert.equal(typeof o.interval, 'function');
+    assert.equal(typeof Observable.create, 'function');
+    assert.equal(typeof Observable.interval, 'function');
   });
 
   it('should have all the core operators as methods', () => {
     const subscriber: Subscriber<any> = (observer: Observer<any>) => () => {};
-    const observable: Observable<any> = o.create(subscriber);
+    const observable: Observable<any> = Observable.create(subscriber);
 
     assert.equal(typeof observable.map, 'function');
     assert.equal(typeof observable.skip, 'function');
