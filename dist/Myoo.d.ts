@@ -8,5 +8,6 @@ import './add/takeUntil';
 import './add/switchMap';
 import './add/distinctUntilChanged';
 import './add/retry';
+import './add/merge';
 export { Observer, Observable, Subscriber, Subscription, Cleanup };
 export default Observable;

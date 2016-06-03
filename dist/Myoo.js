@@ -12,6 +12,7 @@ require('./add/takeUntil');
 require('./add/switchMap');
 require('./add/distinctUntilChanged');
 require('./add/retry');
+require('./add/merge');
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = core_1.Observable;
 //# sourceMappingURL=Myoo.js.map
