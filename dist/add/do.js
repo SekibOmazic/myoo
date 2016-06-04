@@ -5,8 +5,13 @@ function _do(sideEffect) {
     return core_1.Observable.create(function (observer) {
         var doObserver = {
             next: function (x) {
-                sideEffect(x); // TODO: error handling
-                observer.next(x);
+                try {
+                    sideEffect(x);
+                    observer.next(x);
+                }
+                catch (e) {
+                    observer.error(e);
+                }
             },
             error: function (err) { return observer.error(err); },
             complete: function () { return observer.complete(); }

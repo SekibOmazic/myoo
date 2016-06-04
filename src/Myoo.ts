@@ -12,6 +12,7 @@ import './add/distinctUntilChanged';
 import './add/retry';
 import './add/merge';
 import './add/mergeMap';
+import './add/pluck';
 
 
 export {Observer, Observable, Subscriber, Subscription, Cleanup};
