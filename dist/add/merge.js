@@ -8,6 +8,7 @@ function merge() {
     }
     return core_1.Observable.create(function (observer) {
         var subscriptions = [];
+        // TODO: prepend only if "this" is an Observable
         // prepend this observable
         observables.unshift(_this);
         // subscribe to each observable

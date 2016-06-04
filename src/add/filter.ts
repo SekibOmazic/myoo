@@ -1,8 +1,6 @@
 import {Observable, Observer} from '../core';
 
-export type Predicate<T> = (val: T) => boolean;
-
-export function filter<T>(predicate: Predicate<T>): Observable<T> {
+export function filter<T>(predicate: (val: T) => boolean): Observable<T> {
 
   return Observable.create<T>((observer: Observer<T>) => {
     const filterObserver = {

@@ -6,8 +6,12 @@ export function _do<T>(sideEffect: (val: T) => any): Observable<T> {
 
     const doObserver = {
       next: (x: T) => {
-        sideEffect(x); // TODO: error handling
-        observer.next(x);
+        try {
+          sideEffect(x);
+          observer.next(x);
+        } catch (e) {
+          observer.error(e);
+        }
       },
       error: (err: any) => observer.error(err),
       complete: () => observer.complete()

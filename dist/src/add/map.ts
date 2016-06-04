@@ -1,8 +1,6 @@
 import {Observable, Observer} from '../core';
 
-export type Projection<T, U> = (val: T) => U;
-
-export function map<T, U>(projection: Projection<T, U>): Observable<U> {
+export function map<T, U>(projection: (val: T) => U): Observable<U> {
 
   return Observable.create<U>((observer: Observer<U>) => {
     let mapObserver = {

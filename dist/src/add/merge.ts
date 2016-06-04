@@ -6,6 +6,7 @@ export function merge<T, U>(...observables: Array<Observable<any>>): Observable<
 
     let subscriptions: Array<Subscription<any>> = [];
 
+    // TODO: prepend only if "this" is an Observable
     // prepend this observable
     observables.unshift(this);
 
