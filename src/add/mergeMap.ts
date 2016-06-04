@@ -1,5 +1,21 @@
 import {Observable, Observer, Subscription} from '../core';
 
+/**
+ * Projects each source value to an Observable which is merged in the output Observable.
+ *
+ * Marble diagram:
+ *
+ * ```text
+ * --+--------+---------------
+ *   \        \
+ *    \       ----1----2---3--
+ *    --a--b----c----d--------
+ *             mergeMap
+ * -----a--b----c-1--d-2---3--
+ * ```
+ *
+ * @return {Observable}
+ */
 export function mergeMap<T, U>(projection: (val: T) => Observable<U>): Observable<U> {
 
   return Observable.create<U>((observer: Observer<U>) => {

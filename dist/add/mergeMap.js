@@ -1,5 +1,21 @@
 "use strict";
 var core_1 = require('../core');
+/**
+ * Projects each source value to an Observable which is merged in the output Observable.
+ *
+ * Marble diagram:
+ *
+ * ```text
+ * --+--------+---------------
+ *   \        \
+ *    \       ----1----2---3--
+ *    --a--b----c----d--------
+ *             mergeMap
+ * -----a--b----c-1--d-2---3--
+ * ```
+ *
+ * @return {Observable}
+ */
 function mergeMap(projection) {
     var _this = this;
     return core_1.Observable.create(function (observer) {
