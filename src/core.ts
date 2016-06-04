@@ -76,6 +76,49 @@ export class Observable<T> {
     return new Observable<T>(subscriber);
   }
 
+  /**
+   * Converts an array to an Observable. The returned Observable will emit synchronously
+   * all the items in the array, and then complete.
+   *
+   * Marble diagram:
+   *
+   * ```text
+   * fromArray([1,2,3])
+   * 123|
+   * ```
+   *
+   * @param {Array} array The array to be converted as a stream.
+   * @return {Observable}
+   */
+  static fromArray<T>(array: Array<T>): Observable<T> {
+    let subscriber: Subscriber<T> = (observer: Observer<T>) => {
+      array.forEach(item => { observer.next(item); });
+      observer.complete();
+
+      return () => {}
+    };
+
+    return new Observable<T>(subscriber);
+  }
+
+  /**
+   * Creates a Stream that immediately emits the arguments that you give to
+   * *of*, then completes.
+   *
+   * Marble diagram:
+   *
+   * ```text
+   * of(1,2,3)
+   * 123|
+   * ```
+   *
+   * @param items Values you want to emit to the observer.
+   * @return {Observable}
+   */
+  static of<T>(...items: Array<T>): Observable<T> {
+    return Observable.fromArray(items);
+  }
+
   static interval(interval: number): Observable<number> {
     return Observable.create<number>(observer => {
       let count = 0;

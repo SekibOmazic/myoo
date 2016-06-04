@@ -7,6 +7,8 @@ describe('Observable', () => {
   it('should have all the core static operators', () => {
     assert.equal(typeof Observable.create, 'function');
     assert.equal(typeof Observable.interval, 'function');
+    assert.equal(typeof Observable.fromArray, 'function');
+    assert.equal(typeof Observable.of, 'function');
   });
 
   it('should have all the core operators as methods', () => {
@@ -93,6 +95,57 @@ describe('Observable', () => {
 
     assert.equal(expected.length, 0);
     done();
+  });
+
+  it('should create an observable from arguments given to the \'of\' method', (done) => {
+    const expected = [1,2,3];
+    const input = Observable.of<number>(1,2,3);
+
+    input.subscribe({
+      next: (x: number) => {
+        assert.equal(x, expected.shift());
+      },
+      error: (err: any) => done('should never be invoked'),
+      complete: () => {
+        assert.equal(0, expected.length);
+        done();
+      }
+    })
+
+  });
+
+  it('should emit an array as a value if the array is given to the \'of\' method', (done) => {
+    const expected = [[1,2,3]];
+    const input = Observable.of<Array<number>>([1,2,3]);
+    
+    input.subscribe({
+      next: (x: Array<number>) => {
+        assert.notStrictEqual(x, expected.shift());
+      },
+      error: (err: any) => done('should never be invoked'),
+      complete: () => {
+        assert.equal(0, expected.length);
+        done();
+      }
+    })
+    
+  });
+
+  it('should create an observable from the array given to the \'fromArray\' method', (done) => {
+    const expected = [1,2,3];
+    const input = Observable.fromArray<number>([1,2,3]);
+
+    input.subscribe({
+      next: (x: number) => {
+        assert.equal(x, expected.shift());
+      },
+      error: (err: any) => done('should never be invoked'),
+      complete: () => {
+        assert.equal(0, expected.length);
+        done();
+      }
+    })
+
   });
 
 });
