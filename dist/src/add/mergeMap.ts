@@ -14,6 +14,7 @@ import {Observable, Observer, Subscription} from '../core';
  * -----a--b----c-1--d-2---3--
  * ```
  *
+ * @param projection Function that creates an observable for each value it gets as an input.
  * @return {Observable}
  */
 export function mergeMap<T, U>(projection: (val: T) => Observable<U>): Observable<U> {

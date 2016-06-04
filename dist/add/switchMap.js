@@ -1,5 +1,22 @@
 "use strict";
 var core_1 = require('../core');
+/**
+ * Flattens an "observable of observables", handling only one nested stream at a time.
+ *
+ * Marble diagram:
+ *
+ * ```text
+ * --+--------+---------------
+ *   \        \
+ *    \       ----1----2---3--
+ *    --a--b----c----d--------
+ *           switchMap
+ * -----a--b------1----2---3--
+ * ```
+ *
+ * @param projection Function that creates an observable for each value it gets as an input.
+ * @return {Observable}
+ */
 function switchMap(projection) {
     var _this = this;
     return core_1.Observable.create(function (observer) {

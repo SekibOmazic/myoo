@@ -14,6 +14,7 @@ var core_1 = require('../core');
  * -----a--b----c-1--d-2---3--
  * ```
  *
+ * @param projection Function that creates an observable for each value it gets as an input.
  * @return {Observable}
  */
 function mergeMap(projection) {

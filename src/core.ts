@@ -144,22 +144,3 @@ export class Observable<T> {
   }
 
 }
-
-/*
-let myObserver = {
-  next: (x) => console.log('_myObserver ' + x),
-  error: (err) => console.error('myObserver ' + err),
-  complete: () => console.info('myObserver DONE')
-};
-
-let source$ = Observable.interval(1000);
-
-let subscription = source$
-                    .filter(x => x > 0)
-                    .take(5)
-                    .map(x => x + '?')
-                    .subscribe(myObserver);
-
-setTimeout(() => subscription.unsubscribe(), 3000)
-
-*/
