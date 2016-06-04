@@ -13,6 +13,7 @@ import './add/retry';
 import './add/merge';
 import './add/mergeMap';
 import './add/pluck';
+import './add/skipUntil';
 
 
 export {Observer, Observable, Subscriber, Subscription, Cleanup};

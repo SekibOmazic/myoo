@@ -15,6 +15,7 @@ require('./add/retry');
 require('./add/merge');
 require('./add/mergeMap');
 require('./add/pluck');
+require('./add/skipUntil');
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = core_1.Observable;
 //# sourceMappingURL=Myoo.js.map
