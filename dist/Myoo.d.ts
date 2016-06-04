@@ -9,5 +9,6 @@ import './add/switchMap';
 import './add/distinctUntilChanged';
 import './add/retry';
 import './add/merge';
+import './add/mergeMap';
 export { Observer, Observable, Subscriber, Subscription, Cleanup };
 export default Observable;
