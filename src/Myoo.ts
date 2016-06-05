@@ -16,6 +16,7 @@ import './add/pluck';
 import './add/skipUntil';
 import './add/concat';
 import './add/startWith';
+import './add/scan';
 
 export {Observer, Observable, Subscriber, Subscription, Cleanup};
 
