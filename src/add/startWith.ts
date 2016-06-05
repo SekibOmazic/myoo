@@ -1,19 +1,19 @@
-import {Observable, isObservable} from '../core';
+import {Observable} from '../core';
 import {concat} from './concat';
 
-export function startWith<T, U>(value: U | Observable<U>): Observable<U> {
-  const starter = isObservable(value) ? value : Observable.of<U>(value);
+export function startWith(...values: Array<any>): Observable<any> {
+  const starter = Observable.fromArray(values);
   return concat.call(starter, this);
 }
 
 Observable.prototype.startWith = startWith;
 
-export interface StartWithSignature<T> {
-  <U>(value: U | Observable<U>): Observable<U>;
+export interface StartWithSignature {
+  (...values: Array<any>): Observable<any>;
 }
 
 declare module '../core' {
   interface Observable<T> {
-    startWith: StartWithSignature<T>;
+    startWith: StartWithSignature;
   }
 }

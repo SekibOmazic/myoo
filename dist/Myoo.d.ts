@@ -13,5 +13,6 @@ import './add/mergeMap';
 import './add/pluck';
 import './add/skipUntil';
 import './add/concat';
+import './add/startWith';
 export { Observer, Observable, Subscriber, Subscription, Cleanup };
 export default Observable;

@@ -181,7 +181,3 @@ export class Observable<T> {
   }
 
 }
-
-export function isObservable<T>(value: Observable<T> | any): boolean {
-  return (<Observable<T>>value).subscribe !== undefined;
-}
