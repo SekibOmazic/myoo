@@ -13,9 +13,7 @@ var core_1 = require('../core');
  * --1-a--2--b--3-c---d--4---
  * ```
  *
- * @param {Observable} stream1 A stream to merge together with other streams.
- * @param {Observable} stream2 A stream to merge together with other streams. One
- * or more streams may be given as arguments.
+ * @param {Observable} observables An array of Observables to be merged together.
  * @return {Observable}
  */
 function merge() {
@@ -26,9 +24,10 @@ function merge() {
     }
     return core_1.Observable.create(function (observer) {
         var subscriptions = [];
-        // TODO: prepend only if "this" is an Observable
         // prepend this observable
-        observables.unshift(_this);
+        if (_this instanceof core_1.Observable) {
+            observables.unshift(_this);
+        }
         // subscribe to each observable
         observables.forEach(function (observable) {
             var s = observable.subscribe({

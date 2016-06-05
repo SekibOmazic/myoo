@@ -12,9 +12,7 @@ import { Observable } from '../core';
  * --1-a--2--b--3-c---d--4---
  * ```
  *
- * @param {Observable} stream1 A stream to merge together with other streams.
- * @param {Observable} stream2 A stream to merge together with other streams. One
- * or more streams may be given as arguments.
+ * @param {Observable} observables An array of Observables to be merged together.
  * @return {Observable}
  */
 export declare function merge<T, U>(...observables: Array<Observable<any>>): Observable<U>;
