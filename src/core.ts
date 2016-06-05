@@ -1,3 +1,5 @@
+import {Promise} from 'es6-promise';
+
 export interface Observer<T> {
   next(value: T): void;
   error?(err: any): void;
@@ -99,6 +101,41 @@ export class Observable<T> {
     };
 
     return new Observable<T>(subscriber);
+  }
+
+  /**
+   * Converts a promise to an observable. The returned observable will emit the resolved
+   * value of the promise, and then complete. However, if the promise is
+   * rejected, the observable will emit the corresponding error.
+   *
+   * Marble diagram:
+   *
+   * ```text
+   * fromPromise( ----42 )
+   * -----------------42|
+   * ```
+   *
+   * @param {Promise} promise The promise to be converted to an observable.
+   * @return {Observable}
+   */
+  static fromPromise<T>(promise: Promise<T>): Observable<T> {
+    let promiseSubscriber: Subscriber<T> = (observer: Observer<T>) => {
+      promise
+        .then(
+          (value: T) => {
+            observer.next(value);
+            observer.complete();
+          },
+          (err: any) => observer.error(err)
+        )
+        .then(null, (err: any) => {
+          setTimeout(() => { throw err; });
+        });
+
+      return () => {}
+    };
+
+    return new Observable<T>(promiseSubscriber);
   }
 
   /**

@@ -1,11 +1,11 @@
-import {Observable} from '../dist/Myoo';
+import {Observable} from '../src/Myoo';
 
 import * as assert from 'assert';
 
 describe('Map', ()=> {
 
   it('should transform values from input stream to output stream', (done) => {
-    const input = Observable.interval(100).map(i => 10 * i).take(3);
+    const input = Observable.interval(100).map((i: number) => 10 * i).take(3);
     const expected = [0, 10, 20];
 
     input.subscribe({

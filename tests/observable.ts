@@ -1,4 +1,4 @@
-import {Observable, Subscriber, Observer} from '../dist/Myoo';
+import {Observable, Subscriber, Observer} from '../src/Myoo';
 
 import * as assert from 'assert';
 
@@ -9,6 +9,7 @@ describe('Observable', () => {
     assert.equal(typeof Observable.interval, 'function');
     assert.equal(typeof Observable.fromArray, 'function');
     assert.equal(typeof Observable.of, 'function');
+    assert.equal(typeof Observable.fromPromise, 'function');
   });
 
   it('should have all the core operators as methods', () => {

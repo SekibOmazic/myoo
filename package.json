@@ -6,10 +6,10 @@
   "typings": "index.d.ts",
   "scripts": {
     "prebuild": "typings install",
-    "build": "npm-run-all clean_dist copy_src compile_dist",
+    "build": "npm-run-all clean_dist create_dist compile_dist",
     "clean_dist": "rm -rf ./dist",
-    "copy_src": "mkdirp ./dist/src && cp -r ./src/* ./dist/src",
-    "compile_dist": "tsc ./dist/src/Myoo.ts -m commonjs --sourceMap --outDir ./dist --target ES5 -d --diagnostics --pretty --noImplicitAny --suppressImplicitAnyIndexErrors --moduleResolution node",
+    "create_dist": "mkdirp ./dist/src",
+    "compile_dist": "tsc --outDir ./dist",
     "lint": "tslint -c tslint.json src/**/*.ts",
     "mocha": "mocha tests/*.ts tests/**/*.ts --require ts-node/register",
     "postmocha": "rm -rf tests/**/*.js",

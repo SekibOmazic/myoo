@@ -1,4 +1,4 @@
-import {Observable} from '../dist/Myoo';
+import {Observable} from '../src/Myoo';
 
 import * as assert from 'assert';
 

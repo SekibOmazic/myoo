@@ -1,11 +1,11 @@
-import {Observable} from '../dist/Myoo';
+import {Observable} from '../src/Myoo';
 
 import * as assert from 'assert';
 
 describe('Filter', ()=> {
 
   it('should only pass the values passing predicate function to the output stream', (done) => {
-    const input = Observable.interval(50).filter(i => i > 1).take(2);
+    const input = Observable.interval(50).filter((i: number) => i > 1).take(2);
     const expected = [2, 3];
 
     input.subscribe({
