@@ -149,4 +149,44 @@ describe('Observable', () => {
 
   });
 
+  it('should create an observable from a promise and emit the value when the promise resolves', (done) => {
+    const expected = [42];
+    const input = Observable.fromPromise<number>(new Promise((resolve, reject) => {
+      resolve(42);
+    }));
+
+    input.subscribe({
+      next: (x: number) => {
+        assert.equal(x, expected.shift());
+      },
+      error: (err: any) => done('should never be invoked'),
+      complete: () => {
+        assert.equal(0, expected.length);
+        done();
+      }
+    });
+
+  });
+
+  it('should create an observable from a promise and emit the value when the promise resolves', (done) => {
+    const expected = [42];
+    const input = Observable.fromPromise<number>(new Promise((resolve, reject) => {
+      reject('No 42 this time');
+    }));
+
+    input.subscribe({
+      next: (x: number) => {
+        done('should never be invoked');
+      },
+      error: (err: any) => {
+        assert.notStrictEqual(err.match(/No 42 this time$/), null);
+        done();
+      },
+      complete: () => {
+        done('complete should not be called');
+      }
+    });
+
+  });
+
 });
