@@ -40,6 +40,7 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
       let subscription = observable.subscribe({
         next: (x: any) => {
           values[idx] = x;
+          // start emitting only when all sources emitted at least one value
           if (++active >= observables.length) {
             try {
               let output = values;
@@ -54,6 +55,7 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
         },
         error: (err: any) => observer.error(err),
         complete: () => {
+          // complete only when all sources have completed
           if (subscriptions.filter(s => !s.isStopped).length === 0) {
             observer.complete();
           }

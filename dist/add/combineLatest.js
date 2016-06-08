@@ -40,6 +40,7 @@ function combineLatest() {
             var subscription = observable.subscribe({
                 next: function (x) {
                     values[idx] = x;
+                    // start emitting only when all sources emitted at least one value
                     if (++active >= observables.length) {
                         try {
                             var output = values;
@@ -55,6 +56,7 @@ function combineLatest() {
                 },
                 error: function (err) { return observer.error(err); },
                 complete: function () {
+                    // complete only when all sources have completed
                     if (subscriptions.filter(function (s) { return !s.isStopped; }).length === 0) {
                         observer.complete();
                     }
