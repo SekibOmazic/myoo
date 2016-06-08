@@ -18,6 +18,7 @@ import './add/concat';
 import './add/startWith';
 import './add/scan';
 import './add/combineLatest';
+import './add/debounceTime';
 
 export {Observer, Observable, Subscriber, Subscription, Cleanup};
 
