@@ -21,13 +21,11 @@ import {Observable, Observer, Subscription} from '../core';
 export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
 
   return Observable.create<U>((observer: Observer<U>) => {
-    let project: (...values: Array<any>) => U = null;
+    let project: (...values: Array<any>) => any = null;
 
     // last argument is a project function?
     if (typeof observables[observables.length - 1] === 'function') {
       project = <(...values: Array<any>) => U>observables.pop();
-    } else {
-      project = (...values: Array<any>) => <any>values;
     }
 
     let subscriptions: Array<Subscription<any>> = [];
@@ -44,8 +42,11 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
           values[idx] = x;
           if (++active >= observables.length) {
             try {
-              let output = project(values);
-              observer.next(output);
+              let output = values;
+              if (project) {
+                output = project(...values);
+              }
+              observer.next(<any>output);
             } catch (err) {
               observer.error(err);
             }
@@ -74,7 +75,7 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
 Observable.prototype.combineLatest = combineLatest;
 
 export interface CombineLatestSignature<T> {
-  <U>(...observables: Array<Observable<any>>): Observable<U>;
+  <U>(...observables: Array<any>): Observable<U>;
 }
 
 declare module '../core' {

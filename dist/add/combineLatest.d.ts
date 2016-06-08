@@ -19,7 +19,7 @@ import { Observable } from '../core';
  */
 export declare function combineLatest<T, U>(...observables: Array<any>): Observable<U>;
 export interface CombineLatestSignature<T> {
-    <U>(...observables: Array<Observable<any>>): Observable<U>;
+    <U>(...observables: Array<any>): Observable<U>;
 }
 declare module '../core' {
     interface Observable<T> {

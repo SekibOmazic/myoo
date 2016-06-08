@@ -30,15 +30,6 @@ function combineLatest() {
         if (typeof observables[observables.length - 1] === 'function') {
             project = observables.pop();
         }
-        else {
-            project = function () {
-                var values = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    values[_i - 0] = arguments[_i];
-                }
-                return values;
-            };
-        }
         var subscriptions = [];
         var values = [];
         var active = 0;
@@ -51,7 +42,10 @@ function combineLatest() {
                     values[idx] = x;
                     if (++active >= observables.length) {
                         try {
-                            var output = project(values);
+                            var output = values;
+                            if (project) {
+                                output = project.apply(void 0, values);
+                            }
                             observer.next(output);
                         }
                         catch (err) {
