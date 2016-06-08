@@ -17,6 +17,7 @@ import './add/skipUntil';
 import './add/concat';
 import './add/startWith';
 import './add/scan';
+import './add/combineLatest';
 
 export {Observer, Observable, Subscriber, Subscription, Cleanup};
 

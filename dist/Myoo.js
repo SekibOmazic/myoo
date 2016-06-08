@@ -19,6 +19,7 @@ require('./add/skipUntil');
 require('./add/concat');
 require('./add/startWith');
 require('./add/scan');
+require('./add/combineLatest');
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = core_1.Observable;
 //# sourceMappingURL=Myoo.js.map
