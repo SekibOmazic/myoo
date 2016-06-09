@@ -174,6 +174,21 @@ export class Observable<T> {
     });
   }
 
+  static range(from: number, to: number): Observable<number> {
+    return Observable.create<number>(observer => {
+      let total = from + to;
+      let counter = from;
+
+      while (counter < total) {
+        observer.next(counter++);
+      }
+      observer.complete();
+
+      // cleanup function
+      return () => {}
+    });
+  }
+
   constructor(private subscriber: Subscriber<T>) {}
 
   public subscribe(destination: Observer<T>): Subscription<T> {
