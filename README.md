@@ -33,3 +33,10 @@ TODO
 TODO
 
 
+# To be implemented
+
+- Observable.prototype `[@@observable]()`
+- `Observable.from(x)`
+- More operators (and tests)
+- publish to npm
+- Also use `lift` Operator concept to get rid of all this closures
