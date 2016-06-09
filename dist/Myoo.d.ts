@@ -17,5 +17,6 @@ import './add/startWith';
 import './add/scan';
 import './add/combineLatest';
 import './add/debounceTime';
+import './add/withLatestFrom';
 export { Observer, Observable, Subscriber, Subscription, Cleanup };
 export default Observable;

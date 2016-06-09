@@ -1,24 +1,23 @@
 import {Observable, Observer, Subscription} from '../core';
 
 /**
- * Combines multiple Observables to create an Observable whose values are
- * calculated from the latest values of each of its input Observables.
- * It starts emitting values when all input observables emit first value and
- * stops when all input observables have stopped.
+ * Combines the source Observable with other Observables to create an Observable
+ * whose values are calculated from the latest values of each, only when the source emits.
+ * All input Observables must emit at least one value before the output Observable will emit a value.
  *
  * Marble diagram:
  *
  * ```text
- * --1-------2----------------3-----|
- * -----a----------b-----c--|
- *         combineLatest
- * ----(1a)-(2a)--(2b)--(2c)-(3c)---|
+ * --a----b---------c----d-----|
+ * ----1----2--3--4----|
+ *         withLatestFrom
+ * ------(b1)------(c4)--(d4)--|
  * ```
  *
  * @param {Observable} observables An array of Observables to be combined.
  * @return {Observable} An Observable that emits combined values.
  */
-export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
+export function withLatestFrom<T, U>(...observables: Array<any>): Observable<U> {
 
   return Observable.create<U>((observer: Observer<U>) => {
     let project: (...values: Array<any>) => any = null;
@@ -43,8 +42,10 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
             active++;
           }
           values[idx] = x;
+
           // start emitting only when all sources emitted at least one value
-          if (active === observables.length) {
+          // and the source (first observable) emits a value.
+          if (active === observables.length && idx === 0) {
             try {
               let output = values;
               if (project) {
@@ -58,8 +59,8 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
         },
         error: (err: any) => observer.error(err),
         complete: () => {
-          // complete only when all sources have completed
-          if (subscriptions.filter(s => !s.isStopped).length === 0) {
+          // complete when first Observable has completed
+          if (idx === 0) {
             observer.complete();
           }
         }
@@ -77,14 +78,14 @@ export function combineLatest<T, U>(...observables: Array<any>): Observable<U> {
 
 }
 
-Observable.prototype.combineLatest = combineLatest;
+Observable.prototype.withLatestFrom = withLatestFrom;
 
-export interface CombineLatestSignature<T> {
+export interface WithLatestFromSignature<T> {
   <U>(...observables: Array<any>): Observable<U>;
 }
 
 declare module '../core' {
   interface Observable<T> {
-    combineLatest: CombineLatestSignature<T>;
+    withLatestFrom: WithLatestFromSignature<T>;
   }
 }

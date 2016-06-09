@@ -1,24 +1,23 @@
 "use strict";
 var core_1 = require('../core');
 /**
- * Combines multiple Observables to create an Observable whose values are
- * calculated from the latest values of each of its input Observables.
- * It starts emitting values when all input observables emit first value and
- * stops when all input observables have stopped.
+ * Combines the source Observable with other Observables to create an Observable
+ * whose values are calculated from the latest values of each, only when the source emits.
+ * All input Observables must emit at least one value before the output Observable will emit a value.
  *
  * Marble diagram:
  *
  * ```text
- * --1-------2----------------3-----|
- * -----a----------b-----c--|
- *         combineLatest
- * ----(1a)-(2a)--(2b)--(2c)-(3c)---|
+ * --a----b---------c----d-----|
+ * ----1----2--3--4----|
+ *         withLatestFrom
+ * ------(b1)------(c4)--(d4)--|
  * ```
  *
  * @param {Observable} observables An array of Observables to be combined.
  * @return {Observable} An Observable that emits combined values.
  */
-function combineLatest() {
+function withLatestFrom() {
     var _this = this;
     var observables = [];
     for (var _i = 0; _i < arguments.length; _i++) {
@@ -44,7 +43,8 @@ function combineLatest() {
                     }
                     values[idx] = x;
                     // start emitting only when all sources emitted at least one value
-                    if (active === observables.length) {
+                    // and the source (first observable) emits a value.
+                    if (active === observables.length && idx === 0) {
                         try {
                             var output = values;
                             if (project) {
@@ -59,8 +59,8 @@ function combineLatest() {
                 },
                 error: function (err) { return observer.error(err); },
                 complete: function () {
-                    // complete only when all sources have completed
-                    if (subscriptions.filter(function (s) { return !s.isStopped; }).length === 0) {
+                    // complete when first Observable has completed
+                    if (idx === 0) {
                         observer.complete();
                     }
                 }
@@ -73,6 +73,6 @@ function combineLatest() {
         };
     });
 }
-exports.combineLatest = combineLatest;
-core_1.Observable.prototype.combineLatest = combineLatest;
-//# sourceMappingURL=combineLatest.js.map
+exports.withLatestFrom = withLatestFrom;
+core_1.Observable.prototype.withLatestFrom = withLatestFrom;
+//# sourceMappingURL=withLatestFrom.js.map
