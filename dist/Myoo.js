@@ -1,7 +1,8 @@
 "use strict";
-var core_1 = require('./core');
-exports.Observable = core_1.Observable;
-exports.Subscription = core_1.Subscription;
+var Subscription_1 = require('./Subscription');
+exports.Subscription = Subscription_1.Subscription;
+var Observable_1 = require('./Observable');
+exports.Observable = Observable_1.Observable;
 // operators
 require('./add/do');
 require('./add/filter');

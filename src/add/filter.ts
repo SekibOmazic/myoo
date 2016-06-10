@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 export function filter<T>(predicate: (val: T) => boolean): Observable<T> {
 
@@ -33,7 +34,7 @@ export interface FilterSignature<T> {
   (project: (value: T) => boolean): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     filter: FilterSignature<T>;
   }

@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 var map_1 = require('./map');
 function propertyPlucker(properties) {
     var mapperFn = function (x) {
@@ -32,5 +32,5 @@ function pluck() {
     return map_1.map.call(this, propertyPlucker(properties));
 }
 exports.pluck = pluck;
-core_1.Observable.prototype.pluck = pluck;
+Observable_1.Observable.prototype.pluck = pluck;
 //# sourceMappingURL=pluck.js.map

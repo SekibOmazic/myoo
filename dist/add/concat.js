@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Concatenates multiple Observables together by sequentially emitting their values,
  * one Observable after the other.
@@ -22,7 +22,7 @@ function concat() {
     for (var _i = 0; _i < arguments.length; _i++) {
         observables[_i - 0] = arguments[_i];
     }
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var subscription = null;
         var others = observables.slice();
         var concatObserver = {
@@ -54,5 +54,5 @@ function concat() {
     });
 }
 exports.concat = concat;
-core_1.Observable.prototype.concat = concat;
+Observable_1.Observable.prototype.concat = concat;
 //# sourceMappingURL=concat.js.map

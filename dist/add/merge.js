@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Merges multiple streams together, emitting events from all of them
  * concurrently.
@@ -22,10 +22,10 @@ function merge() {
     for (var _i = 0; _i < arguments.length; _i++) {
         observables[_i - 0] = arguments[_i];
     }
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var subscriptions = [];
         // prepend this observable
-        if (_this instanceof core_1.Observable) {
+        if (_this instanceof Observable_1.Observable) {
             observables.unshift(_this);
         }
         // subscribe to each observable
@@ -54,5 +54,5 @@ function merge() {
     });
 }
 exports.merge = merge;
-core_1.Observable.prototype.merge = merge;
+Observable_1.Observable.prototype.merge = merge;
 //# sourceMappingURL=merge.js.map

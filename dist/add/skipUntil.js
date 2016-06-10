@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Ignores the events from the input stream until the control Observable emits
  * first event and then starts forwarding events to the output.
@@ -17,7 +17,7 @@ var core_1 = require('../core');
  */
 function skipUntil(control) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var outer = null;
         var controlSubscription = null;
         var readyToEmit = false;
@@ -46,5 +46,5 @@ function skipUntil(control) {
     });
 }
 exports.skipUntil = skipUntil;
-core_1.Observable.prototype.skipUntil = skipUntil;
+Observable_1.Observable.prototype.skipUntil = skipUntil;
 //# sourceMappingURL=skipUntil.js.map

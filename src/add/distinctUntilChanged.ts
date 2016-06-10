@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 export function distinctUntilChanged<T>(compare?: Function): Observable<T> {
 
@@ -41,7 +42,7 @@ export interface DistinctUntilChangedSignature<T> {
   (compare?: Function): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     distinctUntilChanged: DistinctUntilChangedSignature<T>;
   }

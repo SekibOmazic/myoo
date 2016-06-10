@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 function cleanup(timerId: any) {
   if (timerId) {
@@ -59,7 +60,7 @@ export interface DebounceTimeSignature<T> {
   (dueTime: number): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     debounceTime: DebounceTimeSignature<T>;
   }

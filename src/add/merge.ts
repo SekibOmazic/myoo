@@ -1,4 +1,6 @@
-import {Observable, Observer, Subscription} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
+import {Subscription} from '../Subscription';
 
 /**
  * Merges multiple streams together, emitting events from all of them
@@ -67,7 +69,7 @@ export interface MergeSignature<T> {
   <U>(...observables: Array<Observable<any>>): Observable<U>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     merge: MergeSignature<T>;
   }

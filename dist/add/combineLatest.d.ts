@@ -1,4 +1,4 @@
-import { Observable } from '../core';
+import { Observable } from '../Observable';
 /**
  * Combines multiple Observables to create an Observable whose values are
  * calculated from the latest values of each of its input Observables.
@@ -21,7 +21,7 @@ export declare function combineLatest<T, U>(...observables: Array<any>): Observa
 export interface CombineLatestSignature<T> {
     <U>(...observables: Array<any>): Observable<U>;
 }
-declare module '../core' {
+declare module '../Observable' {
     interface Observable<T> {
         combineLatest: CombineLatestSignature<T>;
     }

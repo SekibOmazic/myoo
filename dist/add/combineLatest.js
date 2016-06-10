@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Combines multiple Observables to create an Observable whose values are
  * calculated from the latest values of each of its input Observables.
@@ -24,7 +24,7 @@ function combineLatest() {
     for (var _i = 0; _i < arguments.length; _i++) {
         observables[_i - 0] = arguments[_i];
     }
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var project = null;
         // last argument is a project function?
         if (typeof observables[observables.length - 1] === 'function') {
@@ -74,5 +74,5 @@ function combineLatest() {
     });
 }
 exports.combineLatest = combineLatest;
-core_1.Observable.prototype.combineLatest = combineLatest;
+Observable_1.Observable.prototype.combineLatest = combineLatest;
 //# sourceMappingURL=combineLatest.js.map

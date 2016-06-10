@@ -1,4 +1,6 @@
-import {Observable, Observer, Subscription} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
+import {Subscription} from '../Subscription';
 
 /**
  * Flattens an "observable of observables", handling only one nested stream at a time.
@@ -78,7 +80,7 @@ export interface SwitchMapSignature<T> {
   <U>(project: (value: T) => Observable<U>): Observable<U>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     switchMap: SwitchMapSignature<T>;
   }

@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Combines the source Observable with other Observables to create an Observable
  * whose values are calculated from the latest values of each, only when the source emits.
@@ -23,7 +23,7 @@ function withLatestFrom() {
     for (var _i = 0; _i < arguments.length; _i++) {
         observables[_i - 0] = arguments[_i];
     }
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var project = null;
         // last argument is a project function?
         if (typeof observables[observables.length - 1] === 'function') {
@@ -74,5 +74,5 @@ function withLatestFrom() {
     });
 }
 exports.withLatestFrom = withLatestFrom;
-core_1.Observable.prototype.withLatestFrom = withLatestFrom;
+Observable_1.Observable.prototype.withLatestFrom = withLatestFrom;
 //# sourceMappingURL=withLatestFrom.js.map

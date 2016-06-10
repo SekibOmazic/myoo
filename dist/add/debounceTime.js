@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function cleanup(timerId) {
     if (timerId) {
         clearTimeout(timerId);
@@ -8,7 +8,7 @@ function cleanup(timerId) {
 }
 function debounceTime(dueTime) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var debounceTimer;
         var current = null;
         var debounceTimeObserver = {
@@ -42,5 +42,5 @@ function debounceTime(dueTime) {
     });
 }
 exports.debounceTime = debounceTime;
-core_1.Observable.prototype.debounceTime = debounceTime;
+Observable_1.Observable.prototype.debounceTime = debounceTime;
 //# sourceMappingURL=debounceTime.js.map

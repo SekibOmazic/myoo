@@ -1,4 +1,4 @@
-import { Observable } from '../core';
+import { Observable } from '../Observable';
 /**
  * Combines the source Observable with other Observables to create an Observable
  * whose values are calculated from the latest values of each, only when the source emits.
@@ -20,7 +20,7 @@ export declare function withLatestFrom<T, U>(...observables: Array<any>): Observ
 export interface WithLatestFromSignature<T> {
     <U>(...observables: Array<any>): Observable<U>;
 }
-declare module '../core' {
+declare module '../Observable' {
     interface Observable<T> {
         withLatestFrom: WithLatestFromSignature<T>;
     }

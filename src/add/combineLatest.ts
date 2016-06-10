@@ -1,4 +1,6 @@
-import {Observable, Observer, Subscription} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
+import {Subscription} from '../Subscription';
 
 /**
  * Combines multiple Observables to create an Observable whose values are
@@ -83,7 +85,7 @@ export interface CombineLatestSignature<T> {
   <U>(...observables: Array<any>): Observable<U>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     combineLatest: CombineLatestSignature<T>;
   }

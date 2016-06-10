@@ -1,4 +1,6 @@
-import {Observable, Observer, Subscription} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
+import {Subscription} from '../Subscription';
 
 /**
  * Combines the source Observable with other Observables to create an Observable
@@ -84,7 +86,7 @@ export interface WithLatestFromSignature<T> {
   <U>(...observables: Array<any>): Observable<U>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     withLatestFrom: WithLatestFromSignature<T>;
   }

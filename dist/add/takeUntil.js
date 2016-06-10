@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Uses another Observable to determine when to complete the current one.
  *
@@ -21,7 +21,7 @@ var core_1 = require('../core');
  */
 function takeUntil(control) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var source = _this.subscribe(observer);
         var innerObserver = {
             next: function (x) { return observer.complete(); },
@@ -36,5 +36,5 @@ function takeUntil(control) {
     });
 }
 exports.takeUntil = takeUntil;
-core_1.Observable.prototype.takeUntil = takeUntil;
+Observable_1.Observable.prototype.takeUntil = takeUntil;
 //# sourceMappingURL=takeUntil.js.map

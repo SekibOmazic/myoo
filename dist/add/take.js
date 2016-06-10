@@ -1,9 +1,9 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function take(total) {
     var _this = this;
     var counter = 0;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var takeObserver = {
             next: function (x) {
                 if (++counter <= total) {
@@ -23,5 +23,5 @@ function take(total) {
     });
 }
 exports.take = take;
-core_1.Observable.prototype.take = take;
+Observable_1.Observable.prototype.take = take;
 //# sourceMappingURL=take.js.map

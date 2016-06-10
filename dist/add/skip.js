@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Ignores the first `total` many events from the input stream, and then
  * after that starts forwarding events from the input stream to the output
@@ -19,7 +19,7 @@ var core_1 = require('../core');
 function skip(total) {
     var _this = this;
     var counter = 0;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var takeObserver = {
             next: function (x) {
                 if (counter++ >= total) {
@@ -36,5 +36,5 @@ function skip(total) {
     });
 }
 exports.skip = skip;
-core_1.Observable.prototype.skip = skip;
+Observable_1.Observable.prototype.skip = skip;
 //# sourceMappingURL=skip.js.map

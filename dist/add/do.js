@@ -1,8 +1,8 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function _do(sideEffect) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var doObserver = {
             next: function (x) {
                 try {
@@ -23,5 +23,5 @@ function _do(sideEffect) {
     });
 }
 exports._do = _do;
-core_1.Observable.prototype.do = _do;
+Observable_1.Observable.prototype.do = _do;
 //# sourceMappingURL=do.js.map

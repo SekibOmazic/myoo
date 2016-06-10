@@ -1,9 +1,9 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function retry(maxTries) {
     var _this = this;
     if (maxTries === void 0) { maxTries = 0; }
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var subscription;
         var retryObserver = {
             next: function (x) { return observer.next(x); },
@@ -28,5 +28,5 @@ function retry(maxTries) {
     });
 }
 exports.retry = retry;
-core_1.Observable.prototype.retry = retry;
+Observable_1.Observable.prototype.retry = retry;
 //# sourceMappingURL=retry.js.map

@@ -17,7 +17,6 @@
   },
   "files": [
     "typings/index.d.ts",
-    "src/core.ts",
     "src/Myoo.ts"
   ],
   "filesGlob": [

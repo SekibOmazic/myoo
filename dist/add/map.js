@@ -1,8 +1,8 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function map(projection) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var mapObserver = {
             next: function (x) {
                 try {
@@ -22,5 +22,5 @@ function map(projection) {
     });
 }
 exports.map = map;
-core_1.Observable.prototype.map = map;
+Observable_1.Observable.prototype.map = map;
 //# sourceMappingURL=map.js.map

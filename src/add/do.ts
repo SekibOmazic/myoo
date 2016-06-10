@@ -1,4 +1,4 @@
-import {Observable} from '../core';
+import {Observable} from '../Observable';
 
 export function _do<T>(sideEffect: (val: T) => any): Observable<T> {
 
@@ -33,7 +33,7 @@ export interface DoSignature<T> {
   (sideEffect: (val: T) => any): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     do: DoSignature<T>;
   }

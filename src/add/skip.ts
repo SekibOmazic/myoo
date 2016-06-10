@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 /**
  * Ignores the first `total` many events from the input stream, and then
@@ -46,7 +47,7 @@ export interface SkipSignature<T> {
   (value: number): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     skip: SkipSignature<T>;
   }

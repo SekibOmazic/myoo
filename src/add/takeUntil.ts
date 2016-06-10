@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 /**
  * Uses another Observable to determine when to complete the current one.
@@ -46,7 +47,7 @@ export interface TakeUntilSignature<T> {
   <U>(control: Observable<U>): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     takeUntil: TakeUntilSignature<T>;
   }

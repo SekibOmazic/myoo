@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Flattens an "observable of observables", handling only one nested stream at a time.
  *
@@ -19,7 +19,7 @@ var core_1 = require('../core');
  */
 function switchMap(projection) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var inner = null;
         var outer = null;
         outer = _this.subscribe({
@@ -58,5 +58,5 @@ function switchMap(projection) {
     });
 }
 exports.switchMap = switchMap;
-core_1.Observable.prototype.switchMap = switchMap;
+Observable_1.Observable.prototype.switchMap = switchMap;
 //# sourceMappingURL=switchMap.js.map

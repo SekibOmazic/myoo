@@ -1,4 +1,4 @@
-import { Observable } from '../core';
+import { Observable } from '../Observable';
 /**
  * Projects each source value to an Observable which is merged in the output Observable.
  *
@@ -20,7 +20,7 @@ export declare function mergeMap<T, U>(projection: (val: T) => Observable<U>): O
 export interface MergeMapSignature<T> {
     <U>(project: (value: T) => Observable<U>): Observable<U>;
 }
-declare module '../core' {
+declare module '../Observable' {
     interface Observable<T> {
         mergeMap: MergeMapSignature<T>;
     }

@@ -1,4 +1,5 @@
-import {Observable, Observer} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
 
 export function take<T>(total: number): Observable<T> {
   let counter: number = 0;
@@ -34,7 +35,7 @@ export interface TakeSignature<T> {
   (value: number): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     take: TakeSignature<T>;
   }

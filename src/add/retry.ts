@@ -1,4 +1,6 @@
-import {Observable, Observer, Subscription} from '../core';
+import {Observable} from '../Observable';
+import {Observer} from '../Observer';
+import {Subscription} from '../Subscription';
 
 export function retry<T>(maxTries: number = 0): Observable<T> {
 
@@ -38,7 +40,7 @@ export interface RetrySignature<T> {
   (value: number): Observable<T>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     retry: RetrySignature<T>;
   }

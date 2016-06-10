@@ -1,8 +1,8 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function scan(accumulator, seed) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var index = 0;
         var acc = seed;
         var seedSet = !!acc;
@@ -32,5 +32,5 @@ function scan(accumulator, seed) {
     });
 }
 exports.scan = scan;
-core_1.Observable.prototype.scan = scan;
+Observable_1.Observable.prototype.scan = scan;
 //# sourceMappingURL=scan.js.map

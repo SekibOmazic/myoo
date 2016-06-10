@@ -1,8 +1,8 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function filter(predicate) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var filterObserver = {
             next: function (x) {
                 try {
@@ -25,5 +25,5 @@ function filter(predicate) {
     });
 }
 exports.filter = filter;
-core_1.Observable.prototype.filter = filter;
+Observable_1.Observable.prototype.filter = filter;
 //# sourceMappingURL=filter.js.map

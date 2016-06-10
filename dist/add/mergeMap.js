@@ -1,5 +1,5 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 /**
  * Projects each source value to an Observable which is merged in the output Observable.
  *
@@ -19,7 +19,7 @@ var core_1 = require('../core');
  */
 function mergeMap(projection) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var innerSubscriptions = [];
         var outer = null;
         outer = _this.subscribe({
@@ -62,5 +62,5 @@ function mergeMap(projection) {
     });
 }
 exports.mergeMap = mergeMap;
-core_1.Observable.prototype.mergeMap = mergeMap;
+Observable_1.Observable.prototype.mergeMap = mergeMap;
 //# sourceMappingURL=mergeMap.js.map

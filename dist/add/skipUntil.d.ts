@@ -1,4 +1,4 @@
-import { Observable } from '../core';
+import { Observable } from '../Observable';
 /**
  * Ignores the events from the input stream until the control Observable emits
  * first event and then starts forwarding events to the output.
@@ -18,7 +18,7 @@ export declare function skipUntil<T, U>(control: Observable<U>): Observable<T>;
 export interface SkipUntilSignature<T> {
     <U>(control: Observable<U>): Observable<T>;
 }
-declare module '../core' {
+declare module '../Observable' {
     interface Observable<T> {
         skipUntil: SkipUntilSignature<T>;
     }

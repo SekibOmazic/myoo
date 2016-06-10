@@ -1,8 +1,8 @@
 "use strict";
-var core_1 = require('../core');
+var Observable_1 = require('../Observable');
 function distinctUntilChanged(compare) {
     var _this = this;
-    return core_1.Observable.create(function (observer) {
+    return Observable_1.Observable.create(function (observer) {
         var last;
         var compareFn;
         if (typeof compare === 'function') {
@@ -29,5 +29,5 @@ function distinctUntilChanged(compare) {
     });
 }
 exports.distinctUntilChanged = distinctUntilChanged;
-core_1.Observable.prototype.distinctUntilChanged = distinctUntilChanged;
+Observable_1.Observable.prototype.distinctUntilChanged = distinctUntilChanged;
 //# sourceMappingURL=distinctUntilChanged.js.map

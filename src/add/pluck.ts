@@ -1,4 +1,4 @@
-import {Observable} from '../core';
+import {Observable} from '../Observable';
 import {map} from './map';
 
 function propertyPlucker<T>(properties: string[]) {
@@ -37,7 +37,7 @@ export interface PluckSignature<T> {
   <U>(...properties: Array<string>): Observable<U>;
 }
 
-declare module '../core' {
+declare module '../Observable' {
   interface Observable<T> {
     pluck: PluckSignature<T>;
   }

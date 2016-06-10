@@ -1,4 +1,4 @@
-import { Observable } from '../core';
+import { Observable } from '../Observable';
 /**
  * Concatenates multiple Observables together by sequentially emitting their values,
  * one Observable after the other.
@@ -19,7 +19,7 @@ export declare function concat<T, U>(...observables: Array<Observable<any>>): Ob
 export interface ConcatSignature<T> {
     <U>(...observables: Array<Observable<any>>): Observable<U>;
 }
-declare module '../core' {
+declare module '../Observable' {
     interface Observable<T> {
         concat: ConcatSignature<T>;
     }
