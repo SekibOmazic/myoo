@@ -1,4 +1,5 @@
 import { Observer, Observable, Subscriber, Subscription, Cleanup } from './core';
+export { Observer, Observable, Subscriber, Subscription, Cleanup };
 import './add/do';
 import './add/filter';
 import './add/map';
@@ -18,5 +19,3 @@ import './add/scan';
 import './add/combineLatest';
 import './add/debounceTime';
 import './add/withLatestFrom';
-export { Observer, Observable, Subscriber, Subscription, Cleanup };
-export default Observable;

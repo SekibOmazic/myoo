@@ -22,6 +22,4 @@ require('./add/scan');
 require('./add/combineLatest');
 require('./add/debounceTime');
 require('./add/withLatestFrom');
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = core_1.Observable;
 //# sourceMappingURL=Myoo.js.map
