@@ -9,7 +9,7 @@
     "module": "commonjs",
     "noEmitHelpers": false,
     "target": "ES5",
-    "outDir": "./"
+    "outDir": "./dist"
   },
   "formatCodeOptions": {
     "indentSize": 2,
@@ -18,10 +18,6 @@
   "files": [
     "typings/index.d.ts",
     "src/Myoo.ts"
-  ],
-  "filesGlob": [
-    "typings/index.d.ts",
-    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",
