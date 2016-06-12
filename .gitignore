@@ -28,6 +28,7 @@ build/Release
 core.d.ts
 core.js
 core.js.map
+dist/
 
 # Generated directories
 .sass-cache/
