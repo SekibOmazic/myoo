@@ -1,6 +1,6 @@
 {
   "name": "myoo",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A simple implementation of functional reactive stream library for JavaScript",
   "main": "Myoo.js",
   "typings": "Myoo.d.ts",
