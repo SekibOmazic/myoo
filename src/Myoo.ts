@@ -22,3 +22,4 @@ import './add/operator/scan';
 import './add/operator/combineLatest';
 import './add/operator/debounceTime';
 import './add/operator/withLatestFrom';
+import './add/operator/buffer';
