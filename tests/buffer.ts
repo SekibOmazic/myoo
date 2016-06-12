@@ -5,10 +5,10 @@ import * as assert from 'assert';
 describe('Buffer', ()=> {
 
   it('should buffer values and emit them when the control triggers', (done) => {
-    const expected = [[0], [1,2], [3,4]];
+    const expected = [[0,1], [2,3]];
 
     var control = Observable.interval(100);
-    var source = Observable.interval(50).take(6);
+    var source = Observable.interval(40).take(6);
     const input = source.buffer(control);
 
     input.subscribe({
