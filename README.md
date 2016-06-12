@@ -25,7 +25,38 @@ simple implementation and by far not complete. For the production you would prob
 
 # Installation
 
-TODO
+### ES6 via npm
+
+```sh
+npm install myoo
+```
+
+To import everything:
+
+```js
+import * as Myoo from 'myoo/Myoo';
+
+Myoo.Observable.of(1,2,3)
+```
+
+To import only what you need (Observable will be patched):
+
+```js
+import {Observable} from 'myoo/Observable';
+import 'myoo/add/operator/map';
+
+Observable.of(1,2,3).map(x => x + '!!!'); // etc
+```
+
+To import what you need and use it with ES next function bind:
+
+```js
+import {Observable} from 'myoo/Observable';
+import {map} from 'myoo/operator/map';
+
+Observable.of(1,2,3)::map(x => x + '!!!'); // etc
+```
+
 
 
 # API

@@ -8,6 +8,7 @@
     "prebuild": "typings install",
     "build": "npm-run-all clean_dist create_dist compile_dist",
     "postbuild": "cp package.json ./dist",
+    "release": "npm publish dist/",
     "clean_dist": "rm -rf ./dist",
     "create_dist": "mkdirp ./dist/src",
     "compile_dist": "tsc --outDir ./dist",
