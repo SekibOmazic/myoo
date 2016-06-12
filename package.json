@@ -2,8 +2,8 @@
   "name": "myoo",
   "version": "0.0.7",
   "description": "A simple implementation of functional reactive stream library for JavaScript",
-  "main": "index.js",
-  "typings": "index.d.ts",
+  "main": "Myoo.js",
+  "typings": "Myoo.d.ts",
   "scripts": {
     "prebuild": "typings install",
     "build": "npm-run-all clean_dist create_dist compile_dist",
