@@ -7,7 +7,9 @@
   "scripts": {
     "prebuild": "typings install",
     "build": "npm-run-all clean_dist create_dist compile_dist",
-    "postbuild": "cp package.json ./dist",
+    "bump_version": "npm version patch",
+    "add_package": "cp package.json ./dist",
+    "prerelease": "npm-run-all bump_version add_package",
     "release": "npm publish dist/",
     "clean_dist": "rm -rf ./dist",
     "create_dist": "mkdirp ./dist/src",
