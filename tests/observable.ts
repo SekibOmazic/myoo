@@ -11,6 +11,7 @@ describe('Observable', () => {
     assert.equal(typeof Observable.of, 'function');
     assert.equal(typeof Observable.fromPromise, 'function');
     assert.equal(typeof Observable.range, 'function');
+    assert.equal(typeof Observable.fromEvent, 'function');
   });
 
   it('should have all the core operators as methods', () => {
@@ -35,6 +36,8 @@ describe('Observable', () => {
     assert.equal(typeof observable.scan, 'function');
     assert.equal(typeof observable.combineLatest, 'function');
     assert.equal(typeof observable.debounceTime, 'function');
+    assert.equal(typeof observable.withLatestFrom, 'function');
+    assert.equal(typeof observable.buffer, 'function');
   });
 
   it('should not emit values after the error has occurred', (done) => {
