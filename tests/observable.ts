@@ -2,6 +2,8 @@ import {Observable, Subscriber, Observer} from '../src/Myoo';
 
 import * as assert from 'assert';
 
+import {MockEventTarget} from './MockEventTarget';
+
 describe('Observable', () => {
 
   it('should have all the core static operators', () => {
@@ -221,6 +223,29 @@ describe('Observable', () => {
       }
     });
 
+  });
+
+  it('should emit events', (done) => {
+    const target = new MockEventTarget();
+    const input = Observable.fromEvent(target, 'test').take(3);
+
+    let expected = [1, 2, 3];
+
+    input.subscribe({
+      next: (x: any) => {
+        assert.strictEqual(x, expected.shift());
+      },
+      error: (err: any) => done(err),
+      complete: () => {
+        assert.strictEqual(expected.length, 0);
+        done();
+      }
+    });
+
+    target.emit(1);
+    target.emit(2);
+    target.emit(3);
+    target.emit(4);
   });
 
 });
