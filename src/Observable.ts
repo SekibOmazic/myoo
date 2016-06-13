@@ -26,10 +26,13 @@ export class Observable<T> {
    */
   static fromArray<T>(array: Array<T>): Observable<T> {
     let subscriber: Subscriber<T> = (observer: Observer<T>) => {
-      array.forEach(item => { observer.next(item); });
+      array.forEach(item => {
+        observer.next(item);
+      });
       observer.complete();
 
-      return () => {}
+      return () => {
+      }
     };
 
     return new Observable<T>(subscriber);
@@ -61,10 +64,13 @@ export class Observable<T> {
           (err: any) => observer.error(err)
         )
         .then(null, (err: any) => {
-          setTimeout(() => { throw err; });
+          setTimeout(() => {
+            throw err;
+          });
         });
 
-      return () => {}
+      return () => {
+      }
     };
 
     return new Observable<T>(promiseSubscriber);
@@ -86,6 +92,22 @@ export class Observable<T> {
    */
   static of<T>(...items: Array<T>): Observable<T> {
     return Observable.fromArray(items);
+  }
+
+  static fromEvent(node: EventTarget, eventType: string, useCapture: boolean = false): Observable<Event> {
+    return Observable.create<Event>(observer => {
+      let listener: EventListener = (e: Event) => observer.next(e);
+
+      node.addEventListener(eventType, listener, useCapture);
+
+      return () => {
+        if (listener) {
+          node.removeEventListener(eventType, listener, useCapture);
+          listener = null;
+        }
+      };
+
+    });
   }
 
   static interval(interval: number): Observable<number> {
@@ -121,7 +143,8 @@ export class Observable<T> {
     });
   }
 
-  constructor(private subscriber: Subscriber<T>) {}
+  constructor(private subscriber: Subscriber<T>) {
+  }
 
   public subscribe(destination: Observer<T>): Subscription<T> {
     return new Subscription(this.subscriber, destination);
