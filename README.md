@@ -90,6 +90,11 @@ var map = require('myoo/operator/map').map;
 map.call(Observable.of(1,2,3), function (x) { return x + '!!!'; });
 ```
 
+### CDN
+For CDN, you can use npmcdn:
+
+[https://npmcdn.com/myoo@0.0.14/bundles/Myoo.js](https://npmcdn.com/myoo@0.0.14/bundles/Myoo.js)
+
 
 # API
 
@@ -102,7 +107,7 @@ TODO
 - `Observable.from(x)`
 - More operators (and tests)
 - Also use `lift` Operator concept to get rid of all those closures
-
+- Add `hot observables` (maybe based on [another Ben Lesh's article](https://medium.com/@benlesh/hot-vs-cold-observables-f8094ed53339)
 
 # License
 
