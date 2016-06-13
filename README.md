@@ -102,3 +102,8 @@ TODO
 - `Observable.from(x)`
 - More operators (and tests)
 - Also use `lift` Operator concept to get rid of all those closures
+
+
+# License
+
+[MIT](https://github.com/SekibOmazic/myoo/blob/master/LICENSE)
