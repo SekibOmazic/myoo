@@ -7,6 +7,9 @@
   "scripts": {
     "prebuild": "typings install",
     "build": "npm-run-all clean_dist create_dist compile_dist",
+    "predist": "rm -rf dist/bundles && mkdirp dist/bundles",
+    "dist": "browserify dist/Myoo.js --standalone Myoo > dist/bundles/Myoo.js",
+    "postdist": "uglifyjs dist/bundles/Myoo.js -o dist/bundles/Myoo.min.js",
     "bump_version": "npm version patch",
     "add_package": "cp package.json ./dist",
     "prerelease": "npm-run-all bump_version add_package",
@@ -33,6 +36,7 @@
   "dependencies": {},
   "devDependencies": {
     "assert": "^1.4.0",
+    "browserify": "^13.0.1",
     "es6-promise": "^3.2.1",
     "mkdirp": "^0.5.1",
     "mocha": "^2.5.3",
