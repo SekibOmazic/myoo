@@ -58,6 +58,38 @@ Observable.of(1,2,3)::map(x => x + '!!!'); // etc
 ```
 
 
+### CommonJS via npm
+
+```sh
+npm install myoo
+```
+
+To import everything:
+
+```js
+var Myoo = require('myoo/Myoo');
+
+Myoo.Observable.of(1,2,3)
+```
+
+To import only what you need (Observable will be patched):
+
+```js
+let Observable = require('myoo/Observable').Observable;
+require('myoo/add/operator/map');
+
+Observable.of(1,2,3).map(x => x + '!!!'); // etc
+```
+
+To import an operator and use it manually, do following:
+
+```js
+var Observable = require('myoo/Observable').Observable;
+var map = require('myoo/operator/map').map;
+
+map.call(Observable.of(1,2,3), function (x) { return x + '!!!'; });
+```
+
 
 # API
 
