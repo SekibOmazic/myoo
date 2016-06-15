@@ -29,6 +29,8 @@ export function merge<T, U>(...observables: Array<Observable<any>>): Observable<
       observables.unshift(this);
     }
 
+    let active: number = observables.length;
+
     // subscribe to each observable
     observables.forEach(observable => {
 
@@ -42,9 +44,10 @@ export function merge<T, U>(...observables: Array<Observable<any>>): Observable<
         complete: () => {
           if (s && !s.isUnsubscribed) {
             s.unsubscribe();
+            active--;
           }
 
-          if (subscriptions.filter(s => !s.isUnsubscribed).length === 0) {
+          if (active === 0) {
             observer.complete();
           }
         }
