@@ -42,9 +42,10 @@ export function merge<T, U>(...observables: Array<Observable<any>>): Observable<
         error: (err: any) => { observer.error(err); },
 
         complete: () => {
+          active--;
+
           if (s && !s.isUnsubscribed) {
             s.unsubscribe();
-            active--;
           }
 
           if (active === 0) {
