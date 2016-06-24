@@ -9,9 +9,11 @@ describe('SwitchMap', ()=> {
 
     const source = Observable.interval(100).take(2);
     const input = source.switchMap((x) => Observable.interval(20).take(10));
-
+    done();
+/*
     input.subscribe({
       next: (x:number) => {
+        console.log(x);
         assert.equal(x, expected.shift());
       },
       error: (err:any) => done('should never be invoked'),
@@ -20,6 +22,28 @@ describe('SwitchMap', ()=> {
         done();
       }
     });
+*/
+    /*
+    const stream = Observable.fromArray([1, 2, 3])
+      .switchMap(i => Observable.interval(100 * i).take(2).map(x => `${i}${x}`));
+      //.flatten();
+    // ---x---x---x---x---x---x
+    // ---10--11
+    // -------20------21
+    // -----------30----------31
+    const expected = ['30', '31'];
+
+    stream.subscribe({
+      next: (x:string) => {
+        assert.equal(x, expected.shift());
+      },
+      error: (err:any) => done(err),
+      complete: () => {
+        assert.equal(expected.length, 0);
+        done();
+      }
+    });
+    */
   });
 
 });
