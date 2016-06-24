@@ -52,7 +52,6 @@ export function switchMap<T, U>(projection: (val: T) => Observable<U>): Observab
       error: (err: any) => observer.error(err),
 
       complete: () => {
-        console.log('outer should complete, inner.isUnsubscribed=' + inner.isUnsubscribed);
         if (!inner || inner.isUnsubscribed) {
           observer.complete();
         }
