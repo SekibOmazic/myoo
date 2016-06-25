@@ -46,7 +46,7 @@ export function mergeMap<T, U>(projection: (val: T) => Observable<U>): Observabl
             }
 
             // if there is no more active streams signal complete to the observer
-            if (innerSubscriptions.filter(s => !s.isUnsubscribed).length === 0) {
+            if (innerSubscriptions.filter(s => !s.isUnsubscribed).length === 0 && outer.isStopped) {
               observer.complete();
             }
           }
