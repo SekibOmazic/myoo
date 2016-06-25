@@ -44,7 +44,9 @@ export function switchMap<T, U>(projection: (val: T) => Observable<U>): Observab
           next: (x: U) => observer.next(x),
           error: (err: any) => observer.error(err),
           complete: () => {
-
+            if (inner.isStopped && outer.isStopped) {
+              observer.complete();
+            }
           }
         });
       },
