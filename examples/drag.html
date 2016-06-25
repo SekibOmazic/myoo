@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by SekibOmazic (http://jsbin.com/qesayi/8/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+
+    <script src="https://npmcdn.com/myoo@0.0.18/bundles/Myoo.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+
+    <style id="jsbin-css">
+        #dragTarget {
+            background-image: url(https://raw.github.com/Reactive-Extensions/RxJS/master/examples/dragndrop/logo.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            height: 200px;
+            width: 200px;
+            background-color: #000000;
+            border: 1px solid #666666;
+            color: #ffffff;
+            padding: 10px;
+            position: absolute;
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dragTarget">Drag Me!</div>
+        <div class="container">
+            <div class="page-header">
+                <h1>Drag and Drop Example</h1>
+                <p class="lead">Example to show coordinating events to perform drag and drop</p>
+            </div>
+        </div>
+
+    <script id="jsbin-javascript">
+        let dragTarget = document.getElementById('dragTarget');
+
+        // Get the three major events
+        let mouseup = Myoo.Observable.fromEvent(dragTarget, 'mouseup');
+        let mousemove = Myoo.Observable.fromEvent(document, 'mousemove');
+        let mousedown = Myoo.Observable.fromEvent(dragTarget, 'mousedown');
+
+        let mousedrag = mousedown.switchMap((md) => {
+            // calculate offsets when mouse down
+            let startX = md.offsetX, startY = md.offsetY;
+
+            // Calculate delta with mousemove until mouseup
+            return mousemove.map((mm) => {
+                (mm.preventDefault) ? mm.preventDefault() : event.returnValue = false;
+
+                return {
+                    left: mm.clientX - startX,
+                    top: mm.clientY - startY
+                };
+            }).takeUntil(mouseup);
+        });
+
+        let myObserver = {
+            next: (pos) => {
+                dragTarget.style.top = pos.top + 'px';
+                dragTarget.style.left = pos.left + 'px';
+            },
+            error: err => console.log(err),
+            complete: () => console.log('DONE')
+        };
+
+        // Update position
+        let subscription = mousedrag.subscribe(myObserver);
+    </script>
+</body>
+
+</html>
