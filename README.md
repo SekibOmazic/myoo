@@ -91,9 +91,9 @@ map.call(Observable.of(1,2,3), function (x) { return x + '!!!'; });
 ```
 
 ### CDN
-For CDN, you can use npmcdn:
+For CDN, you can use unpkg:
 
-[https://npmcdn.com/myoo@0.0.14/bundles/Myoo.js](https://npmcdn.com/myoo@0.0.14/bundles/Myoo.js)
+[https://unpkg.com/myoo@0.0.14/bundles/Myoo.js](https://unpkg.com/myoo@0.0.14/bundles/Myoo.js)
 
 
 # API
